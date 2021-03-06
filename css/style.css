@@ -1,15 +1,22 @@
 * {
     box-sizing: border-box;
 }
+:root{
+    --bg-gunmetal: #353A42;
+    --bg-raisin: #222028;
+    --bg-yellow: #FFBC48;
+    --bg-white: #fff;
+}
 body{
     margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: var(--bg-gunmetal);
 }
 p{
     line-height: 1.6;
 }
 a{
-    color:#FFBC48;
+    color:var(--bg-yellow);
     font-weight: 600;
 }
 ul{
@@ -19,7 +26,7 @@ ul{
 blockquote{
     margin: 0;
     padding: 0 1em;
-    border-left: #FFBC48 4px solid;
+    border-left: var(--bg-yellow) 4px solid;
     font-style: italic;
 }
 figure{
@@ -29,23 +36,14 @@ img{
     max-width: 100%;
     max-height: 100%;
 }
-.raisin-bg {
-    background-color: #222028;
-    color: #FFBC48;
-}
-.gunmetal-bg {
-    background-color: #353A42;
-    color:#FFBC48;
-}
-.white-text {
-    color: #FFF;
-}
+
+
 .fira-text, h1,h2,h3,h4,h5,h6{
     font-family: 'Fira Sans', sans-serif;
 }
 .baguette-bg{
     background-image: linear-gradient(rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.7)), url(../img/ingredients-480w.jpg) ;
+    rgba(0, 0, 0, 0.7)), url(../img/ingredients-1920w.jpg) ;
     /* background-repeat: no-repeat; */
     /* background-position: center; */
     background-size: cover;
@@ -63,9 +61,10 @@ img{
     margin: 0;
 }
 .badge {
-    background-color: #FFBC48;
+    background-color: var(--bg-yellow);
     color: black;
     padding: 0 0.5em;
+    text-transform: uppercase;
 }
 .bullet-list{
     list-style: disc;
@@ -75,70 +74,124 @@ img{
     padding: 0.25em 0;
 }
 .highlight{
-    background-color:#FFBC48;
+    background-color:var(--bg-yellow);
     padding: 0 0.12em !important;
+}
+.grid-container{
+    padding: 1em;
+    background-color: var(--bg-white);
 }
 /* .gallery img{
     max-width: 100%;
     max-height: 100%;
 } */
-#header *{
+/* #header *{
     margin: 0;
-}
-#header{
+} */
+.header{
     padding: 1em;
+    color: var(--bg-white)
 }
-#navbar {
+
+.navbar{
+    background-color: var(--bg-raisin);
+    color: var(--bg-yellow);
     font-family: 'Fira Sans', sans-serif;
 }
-#navbar ul{
+
+.navbar ul{
     margin: 0;
     padding: 1em 1em;
 }
-#navbar ul a {
+.navbar ul a {
     color: inherit;
     font-weight: bold;
     text-decoration: none;
 }
-#navbar ul li{
+.navbar ul li{
     padding: 0.5em 0;
 }
-#content {
-    padding: 1em;
-}
-#info{
+.info{
     font-weight: 700;
 }
-#info li{
+.info li{
     padding: 0.12em 0em;
 }
-#process ol{
+.process ol{
     padding: 1em;
 }
 
-#process img{
+.process img{
     max-width: 100%;
     max-height: 100%;
 }
-#schedule table{
+.schedule table{
     width: 100%;
 }
-#schedule table,th,td{
+.schedule table,th,td{
     border: black 1px solid; 
     border-collapse: collapse;
     padding: 1em;
     text-align: center;
 }
-#schedule table tbody tr:nth-child(odd) {
+.schedule table tbody tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
-#footer{
+.footer{
     vertical-align: middle;
     padding: 1em;
     height: 100px;
     max-width: 100%;
+    background-color: var(--bg-raisin);
+    color: var(--bg-white);
 }
-#footer p{
+.footer p, ul{
     vertical-align: middle ;
     margin: 0;
+}
+.footer ul li{
+    display: inline;
+}
+
+@media only screen and (min-width: 600px){
+    .header-content, .navbar, .grid-container, .footer{
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+    .header-content .info, .navbar ul{
+        display: flex;
+        justify-content: space-between;
+    }
+    .grid-container{
+        padding: 0;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 0px 0px;
+        grid-template-areas:
+        "side story"
+        "side process"
+        "side schedule"
+        "side result"; 
+    }
+    .story, .side-content, .process, .schedule, .result{
+        padding: 1em;
+    }
+    .story { 
+        grid-area: story; 
+    }
+    .side-content { 
+        background-color: var(--bg-yellow);
+        padding-right: 1em;
+        grid-area: side; 
+    }
+    .process { 
+        grid-area: process; 
+    }
+    .schedule { 
+        grid-area: schedule; 
+    }
+    .result { 
+        grid-area: result; 
+    }
 }
